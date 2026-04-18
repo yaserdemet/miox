@@ -16,16 +16,27 @@ export const DamageRow: React.FC<DamageRowProps> = ({ process }) => {
 
   const getStatusVariant = (status: string) => {
     if (status.includes("Tamamlandı")) return "success";
-    if (status.includes("Devam Ediyor") || status.includes("Bekleniyor")) return "secondary";
-    if (status.includes("Kapatıldı") || status.includes("Kapatılmak Üzere")) return "default";
-    if (status.includes("Hasar Bildirimi Alındı")) return "outline";
-    return "outline";
+    if (status.includes("Devam Ediyor") || status.includes("Bekleniyor")) return "pastel-blue";
+    if (status.includes("Kapatıldı") || status.includes("Kapatılmak Üzere")) return "pastel-purple";
+    if (status.includes("Hasar Bildirimi Alındı")) return "pastel-yellow";
+    return "pastel-slate";
+  };
+
+  const getTitleVariant = (title: string) => {
+    if (title.includes("Hasar")) return "pastel-blue";
+    if (title.includes("Cam")) return "pastel-purple";
+    if (title.includes("Pert")) return "pastel-yellow";
+    return "pastel-slate";
   };
 
   return (
     <TableRow>
       <TableCell className="font-medium">{process.fileNo}</TableCell>
-      <TableCell>{process.title}</TableCell>
+      <TableCell>
+        <Badge variant={getTitleVariant(process.title)} className="font-medium bg-opacity-10">
+          {process.title}
+        </Badge>
+      </TableCell>
       <TableCell>
         <Badge variant={getStatusVariant(process.currentStatus)} className="font-normal">
           {process.currentStatus}

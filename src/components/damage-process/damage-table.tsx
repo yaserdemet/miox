@@ -8,22 +8,21 @@ import {
 } from "@/components/ui/table";
 import type { DamageProcess } from "./damage-types";
 import { DamageRow } from "./damage-row";
-
-interface DamageTableProps {
-  data: DamageProcess[];
-}
+import { useTranslation } from "react-i18next";
 
 export const DamageTable: React.FC<DamageTableProps> = ({ data }) => {
+  const { t } = useTranslation();
+
   return (
     <div className="rounded-md border bg-card">
       <Table>
         <TableHeader>
           <TableRow>
-            <TableHead className="w-[150px]">Dosya No</TableHead>
-            <TableHead>Başlık</TableHead>
-            <TableHead>Durum</TableHead>
-            <TableHead>Kalan Süre</TableHead>
-            <TableHead className="text-right">İşlemler</TableHead>
+            <TableHead className="w-[150px]">{t("fileNo")}</TableHead>
+            <TableHead>{t("title")}</TableHead>
+            <TableHead>{t("status")}</TableHead>
+            <TableHead>{t("remainingTime")}</TableHead>
+            <TableHead className="text-right">{t("actions")}</TableHead>
           </TableRow>
         </TableHeader>
         <TableBody>

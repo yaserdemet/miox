@@ -1,6 +1,6 @@
 import Layout from "@/layout/layout";
 import { Outlet, createBrowserRouter } from "react-router-dom";
-import { About, DamageProcess, DamageDetails } from "./elements";
+import { About, DamageProcess, DamageDetails, Settings } from "./elements";
 
 export const router = createBrowserRouter([
     {
@@ -18,6 +18,10 @@ export const router = createBrowserRouter([
             {
                 path : "/damage/:fileNo",
                 element : <DamageDetails />
+            },
+            {
+                path : "/settings",
+                element : <Settings />
             },
             {
                 path : "/about",

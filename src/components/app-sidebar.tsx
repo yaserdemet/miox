@@ -27,36 +27,26 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 
-// Menu items.
-const items = [
-  {
-    title: "Home",
-    url: "#",
-    icon: Home,
-  },
-  {
-    title: "Inbox",
-    url: "#",
-    icon: Inbox,
-  },
-  {
-    title: "Calendar",
-    url: "#",
-    icon: Calendar,
-  },
-  {
-    title: "Search",
-    url: "#",
-    icon: Search,
-  },
-  {
-    title: "Settings",
-    url: "#",
-    icon: Settings,
-  },
-]
+import { useTranslation } from "react-i18next";
+import { Link } from "react-router-dom";
 
 export function AppSidebar() {
+  const { t } = useTranslation();
+
+  // Menu items.
+  const items = [
+    {
+      title: t("damageProcesses"),
+      url: "/",
+      icon: Home,
+    },
+    {
+      title: t("settings"),
+      url: "/settings",
+      icon: Settings,
+    },
+  ]
+
   return (
     <Sidebar collapsible="icon">
       <SidebarHeader className="h-14 flex items-center px-4 border-b border-sidebar-border">
@@ -75,10 +65,10 @@ export function AppSidebar() {
               {items.map((item) => (
                 <SidebarMenuItem key={item.title}>
                   <SidebarMenuButton asChild tooltip={item.title}>
-                    <a href={item.url}>
+                    <Link to={item.url}>
                       <item.icon />
                       <span>{item.title}</span>
-                    </a>
+                    </Link>
                   </SidebarMenuButton>
                 </SidebarMenuItem>
               ))}

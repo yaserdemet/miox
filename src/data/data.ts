@@ -1,3 +1,13 @@
+import type { DamageProcess } from "@/components/damage-process/damage-types";
+
+export const fetchDamageData = async (): Promise<DamageProcess[]> => {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      resolve(data as DamageProcess[]);
+    }, 1000);
+  });
+};
+
 export const data = [
   {
     "title": "Hasar Süreci",
