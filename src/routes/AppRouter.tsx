@@ -1,6 +1,6 @@
 import Layout from "@/layout/layout";
 import { Outlet, createBrowserRouter } from "react-router-dom";
-import { About, DamageProcess, DamageDetails, Settings } from "./elements";
+import { DamageProcess, DamageDetails, Settings } from "./elements";
 
 export const router = createBrowserRouter([
     {
@@ -23,10 +23,7 @@ export const router = createBrowserRouter([
                 path : "/settings",
                 element : <Settings />
             },
-            {
-                path : "/about",
-                element : <About />
-            }
+           
         ]
     }
 ])
