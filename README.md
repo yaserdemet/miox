@@ -73,3 +73,6 @@ The following features were identified for the next development phase:
 
 ---
 
+## AI Assistance
+
+This project was developed with the assistance of AI tools. Specifically, Gemini and Jules from Antigravity were utilized to enhance productivity and code quality.

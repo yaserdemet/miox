@@ -10,6 +10,10 @@ import type { DamageProcess } from "./damage-types";
 import { DamageRow } from "./damage-row";
 import { useTranslation } from "react-i18next";
 
+interface DamageTableProps {
+  data: DamageProcess[];
+}
+
 export const DamageTable: React.FC<DamageTableProps> = ({ data }) => {
   const { t } = useTranslation();
 
@@ -26,7 +30,7 @@ export const DamageTable: React.FC<DamageTableProps> = ({ data }) => {
           </TableRow>
         </TableHeader>
         <TableBody>
-          {data.map((process) => (
+          {data.map((process: DamageProcess) => (
             <DamageRow
               key={process.fileNo}
               process={process}
