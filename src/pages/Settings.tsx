@@ -1,4 +1,3 @@
-import React from "react";
 import { useTranslation } from "react-i18next";
 import {
   Select,
@@ -55,7 +54,7 @@ export const Settings = () => {
             </Label>
             <Select
               defaultValue={theme}
-              onValueChange={(value) => setTheme(value as any)}
+              onValueChange={(value) => setTheme(value as "dark" | "light" | "system")}
             >
               <SelectTrigger id="theme" className="w-full">
                 <SelectValue />

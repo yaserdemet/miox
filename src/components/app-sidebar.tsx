@@ -1,8 +1,5 @@
 import {
-  Calendar,
   Home,
-  Inbox,
-  Search,
   Settings,
   ChevronUp,
   User2,
@@ -22,8 +19,6 @@ import {
 } from "@/components/ui/sidebar"
 import {
   DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 

@@ -1,11 +1,15 @@
 import Loading from "@/pages/Loading";
-import { Suspense, lazy, type ElementType } from "react";
+import { Suspense, lazy } from "react";
 
-const Loadable = (Component: ElementType) => (props: any) => (
-  <Suspense fallback={<Loading />}>
-    <Component {...props} />
-  </Suspense>
-);
+const Loadable = (Component: any) => {
+  const LoadableComponent = (props: any) => (
+    <Suspense fallback={<Loading />}>
+      <Component {...props} />
+    </Suspense>
+  );
+  LoadableComponent.displayName = `Loadable(${Component.displayName || Component.name || 'Component'})`;
+  return LoadableComponent;
+};
 
 export const DamageProcess = Loadable(lazy(() => import("@/pages/damage-process-page")));
 export const DamageDetails = Loadable(lazy(() => import("@/pages/damage-details-page")));
