@@ -1,70 +1,75 @@
-# Miox - Damage Process Management Dashboard
+# Miox | Damage Process Dashboard
 
-Miox is a modern, high-performance, and user-friendly management dashboard designed to track, manage, and detail insurance and damage processes.
+Miox is a high-performance management dashboard built for tracking and managing insurance damage claims with a focus on modern UX and developer efficiency.
 
-> [!NOTE]  
-> This project was developed using **Gemini** AI within the **Antigravity IDE**, showcasing the power of AI-assisted coding in building robust React applications.
+---
 
-## 🚀 Tech Stack & Tools
+### 🛠 Core Technologies
 
-This project is built using modern web development standards and best practices:
+| Layer | Technology |
+| :--- | :--- |
+| **Framework** | React 18 (Vite) |
+| **Language** | TypeScript |
+| **Styling** | Tailwind CSS + Shadcn UI |
+| **Routing** | React Router v6 |
+| **State** | Zustand (with Persistence) |
+| **Data Fetching** | TanStack Query v5 |
+| **i18n** | i18next (TR/EN Support) |
 
-- **Vite & React**: Fast development environment and optimized production builds.
-- **TypeScript**: Type safety and better developer experience across the application.
-- **Shadcn UI & Tailwind CSS**: Highly customizable, accessible, and modern design components.
-- **React Router DOM**: Dynamic route management and comprehensive detail views.
-- **TanStack Query (React Query)**: Asynchronous state management, caching, and a simulated API layer.
-- **Zustand & Persist**: Lightweight and performant state management. Integrated with persist middleware to store user notes in local storage.
-- **i18next**: Multi-language support (English & Turkish) with instant language switching.
-- **React Suspense & Lazy Load**: Optimized loading times through page-based code splitting.
-- **Lucide React**: Consistent and aesthetic icon set.
+---
 
-## ✨ Key Features
+### ✨ Key Features
 
-- **Damage Dashboard**: A dynamic table where all files are listed by status and process stages.
-- **Advanced Filtering**: Instant data filtering by file number, title, or status.
-- **Detailed Process Tracking**: Reviewing the history and current steps of each file with technical details.
-- **Process Explanation (AI-Driven UI)**: "Explain Process" feature that simplifies complex technical terms for the end-user.
-- **Persistent Note System**: Ability to take private notes for each file that persist across browser sessions.
-- **Multi-language Support**: Seamless switching between EN and TR.
-- **Dark/Light Mode**: Full dark mode support for better accessibility (Quick toggle with "D" key).
-- **Dynamic Breadcrumbs**: Automatically updated navigation paths based on the current route.
+- **Dynamic Claim Board**: Comprehensive table with status-based coloring and real-time filtering.
+- **Process Clarity**: "Explain" feature that translates complex insurance jargon into simplified terms for users.
+- **Persistent Notes**: Document-specific notes powered by Zustand persistence (saves to local storage).
+- **Deep Tracking**: Detailed view for every claim, showing full process history and technical data.
+- **Modern UX**: Breadcrumb navigation, smooth transitions, and a quick-toggle Dark Mode ("D" key).
+- **Performance**: Optimized via code-splitting (Suspense/Lazy loading) and efficient data caching.
 
-## 🛠️ Installation & Usage
+---
 
-1. Install dependencies:
+### 📁 Project Architecture
+
+```bash
+src/
+├── components/   # Atomic UI & Shared Logic
+├── pages/        # Main View Components
+├── store/        # Zustand Persistence Logic
+├── locales/      # i18n Translation Assets
+├── data/         # Mock API & Data Simulation
+└── layout/       # App Shell & Navigation
+```
+
+---
+
+### 🚀 Getting Started
+
+1. **Install dependencies**:
    ```bash
    npm install
    ```
-
-2. Start the development server:
+2. **Launch development server**:
    ```bash
    npm run dev
    ```
-
-3. Build for production:
+3. **Build for production**:
    ```bash
    npm run build
    ```
 
-## 📁 Project Structure
-
-- `src/components`: UI and modular components.
-- `src/pages`: Page-level components (Dashboard, Details, Settings).
-- `src/store`: Zustand state definitions.
-- `src/locales`: Language translation files (JSON).
-- `src/data`: Mock datasets and simulated API services.
-- `src/layout`: Application shell, Sidebar, and Header components.
-
-## 🔮 Future Roadmap (Next Steps)
-
-With more development time, the following features would be implemented to further enhance performance and UX:
-
-- **Filtering Debounce**: Implementing a debounce mechanism for the search input to reduce unnecessary re-renders and filter operations during typing.
-- **Server-side Pagination**: Adding pagination support to handle thousands of damage records efficiently without overloading the browser.
-- **Scroll Restoration**: Ensuring the user returns to their exact scroll position when navigating back from a detail page to the main list.
-- **Advanced Analytics**: Integrating charts to visualize damage process durations and status distributions.
-
 ---
 
+### 🔮 Roadmap & Future Enhancements
+
+The following features were identified for the next development phase:
+
+- **Debounced Search**: Optimize filtering by reducing unnecessary re-renders during input.
+- **Server-side Pagination**: Scalable data handling for thousands of records.
+- **Scroll Restoration**: Persistence of scroll position during navigation.
+- **Global Error Boundary**: Custom UI for graceful error handling across the app.
+- **Error Tracking**: Integration with **Sentry** for real-time error monitoring and debugging.
+- **Interactive Analytics**: Charting tools to visualize claim processing times and trends.
+
+---
 
