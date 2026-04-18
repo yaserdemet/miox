@@ -83,24 +83,11 @@ export function AppSidebar() {
               <DropdownMenuTrigger asChild>
                 <SidebarMenuButton className="h-12">
                   <User2 /> 
-                  <span className="group-data-[collapsible=icon]:hidden">Username</span>
+                  <span className="group-data-[collapsible=icon]:hidden">Miox Test Case</span>
                   <ChevronUp className="ml-auto group-data-[collapsible=icon]:hidden" />
                 </SidebarMenuButton>
               </DropdownMenuTrigger>
-              <DropdownMenuContent
-                side="top"
-                className="w-[--radix-dropdown-menu-trigger-width]"
-              >
-                <DropdownMenuItem>
-                  <span>Account</span>
-                </DropdownMenuItem>
-                <DropdownMenuItem>
-                  <span>Billing</span>
-                </DropdownMenuItem>
-                <DropdownMenuItem>
-                  <span>Sign out</span>
-                </DropdownMenuItem>
-              </DropdownMenuContent>
+            
             </DropdownMenu>
           </SidebarMenuItem>
         </SidebarMenu>

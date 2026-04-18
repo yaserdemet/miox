@@ -48,7 +48,7 @@ export const DamageProcessPage: React.FC = () => {
   }
 
   return (
-    <div className="container mx-auto py-10 space-y-6">
+    <div className="container mx-auto py-2 space-y-6">
       <div className="flex flex-col gap-2">
         <h1 className="text-3xl font-bold tracking-tight">{t("damageProcesses")}</h1>
         <p className="text-muted-foreground">
