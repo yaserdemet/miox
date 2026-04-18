@@ -1,6 +1,6 @@
 import Layout from "@/layout/layout";
 import { Outlet, createBrowserRouter } from "react-router-dom";
-import { About, DamageProcess } from "./elements";
+import { About, DamageProcess, DamageDetails } from "./elements";
 
 export const router = createBrowserRouter([
     {
@@ -14,6 +14,10 @@ export const router = createBrowserRouter([
             {
                 index: true,
                 element: <DamageProcess />
+            },
+            {
+                path : "/damage/:fileNo",
+                element : <DamageDetails />
             },
             {
                 path : "/about",

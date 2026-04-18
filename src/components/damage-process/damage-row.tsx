@@ -7,16 +7,27 @@ import { Eye } from "lucide-react";
 
 interface DamageRowProps {
   process: DamageProcess;
-  onViewDetails: (process: DamageProcess) => void;
 }
 
-export const DamageRow: React.FC<DamageRowProps> = ({ process, onViewDetails }) => {
+import { useNavigate } from "react-router-dom";
+
+export const DamageRow: React.FC<DamageRowProps> = ({ process }) => {
+  const navigate = useNavigate();
+
+  const getStatusVariant = (status: string) => {
+    if (status.includes("Tamamlandı")) return "success";
+    if (status.includes("Devam Ediyor") || status.includes("Bekleniyor")) return "secondary";
+    if (status.includes("Kapatıldı") || status.includes("Kapatılmak Üzere")) return "default";
+    if (status.includes("Hasar Bildirimi Alındı")) return "outline";
+    return "outline";
+  };
+
   return (
-    <TableRow className="group">
+    <TableRow>
       <TableCell className="font-medium">{process.fileNo}</TableCell>
       <TableCell>{process.title}</TableCell>
       <TableCell>
-        <Badge variant="outline" className="font-normal">
+        <Badge variant={getStatusVariant(process.currentStatus)} className="font-normal">
           {process.currentStatus}
         </Badge>
       </TableCell>
@@ -27,8 +38,8 @@ export const DamageRow: React.FC<DamageRowProps> = ({ process, onViewDetails }) 
         <Button
           variant="ghost"
           size="icon"
-          onClick={() => onViewDetails(process)}
-          className="opacity-0 group-hover:opacity-100 transition-opacity"
+          onClick={() => navigate(`/damage/${process.fileNo}`)}
+          title="Detayları Gör"
         >
           <Eye className="size-4" />
         </Button>

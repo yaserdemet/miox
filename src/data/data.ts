@@ -258,5 +258,85 @@ export const data = [
         "completionDate": "01.07.2025 10:00"
       }
     ]
+  },
+  {
+    "title": "Cam Hasarı",
+    "fileNo": "4422110055",
+    "estimatedRemainingTime": "1 Gün",
+    "currentStatus": "Tamamlandı",
+    "processDetails": [
+      {
+        "title": "Hasar Bildirimi",
+        "status": "Tamamlandı",
+        "dateTime": "10/09/2025 10:00",
+        "reportType": "Servis Beyanı",
+        "reasonForDamage": "Ön Cam Çatlağı",
+        "reportingParty": "Carglass İstanbul",
+        "contact": "0 (212) 345 67 89"
+      },
+      {
+        "title": "Ekspertiz",
+        "status": "Tamamlandı",
+        "expertAssignmentDate": "10.09.2025 11:00",
+        "expertInfo": "Otomatik Onay (Cam)",
+        "contact": "—"
+      },
+      {
+        "title": "Ödeme Bilgisi",
+        "status": "Tamamlandı",
+        "paidTo": "Carglass A.Ş.",
+        "paymentAmount": "4.500 TL",
+        "note": "Servis Ödemesi Yapıldı"
+      }
+    ]
+  },
+  {
+    "title": "Hasar Süreci",
+    "fileNo": "3399887766",
+    "estimatedRemainingTime": "20 Gün",
+    "currentStatus": "Evrak Bekleniyor",
+    "processDetails": [
+      {
+        "title": "Hasar Bildirimi",
+        "status": "Tamamlandı",
+        "dateTime": "12/11/2025 15:30",
+        "reportType": "Resmi Zabit",
+        "reasonForDamage": "Hırsızlık (Radyo/Teyp)",
+        "reportingParty": "Ali Yılmaz",
+        "contact": "0 505 111 22 33"
+      },
+      {
+        "title": "Dosya İnceleme",
+        "status": "Devam Ediyor",
+        "actionRequired": "Karakol Tutanağı Aslı",
+        "reviewReferralDate": "15.11.2025"
+      }
+    ]
+  },
+  {
+    "title": "Pert Süreci",
+    "fileNo": "2211443377",
+    "estimatedRemainingTime": "45 Gün",
+    "currentStatus": "Sözleşme Bekleniyor",
+    "processDetails": [
+      {
+        "title": "Çekici Hizmeti",
+        "status": "Tamamlandı",
+        "pickupLocation": "Adana/Seyhan",
+        "towingDate": "05/12/2025"
+      },
+      {
+        "title": "Ekspertiz",
+        "status": "Tamamlandı",
+        "expertInfo": "Adana Ekspertiz Grubu",
+        "note": "Araç Ağır Hasarlı (Pert)"
+      },
+      {
+        "title": "Kesinti Nedeni",
+        "status": "Tamamlandı",
+        "policyDeductible": "5.000 TL",
+        "nonDamageAmount": "10.000 TL (Sovtaj)"
+      }
+    ]
   }
 ]

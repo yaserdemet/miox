@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import {
   Table,
   TableBody,
@@ -8,21 +8,12 @@ import {
 } from "@/components/ui/table";
 import type { DamageProcess } from "./damage-types";
 import { DamageRow } from "./damage-row";
-import { DamageDetails } from "./damage-details";
 
 interface DamageTableProps {
   data: DamageProcess[];
 }
 
 export const DamageTable: React.FC<DamageTableProps> = ({ data }) => {
-  const [selectedProcess, setSelectedProcess] = useState<DamageProcess | null>(null);
-  const [isDetailsOpen, setIsDetailsOpen] = useState(false);
-
-  const handleViewDetails = (process: DamageProcess) => {
-    setSelectedProcess(process);
-    setIsDetailsOpen(true);
-  };
-
   return (
     <div className="rounded-md border bg-card">
       <Table>
@@ -40,17 +31,10 @@ export const DamageTable: React.FC<DamageTableProps> = ({ data }) => {
             <DamageRow
               key={process.fileNo}
               process={process}
-              onViewDetails={handleViewDetails}
             />
           ))}
         </TableBody>
       </Table>
-
-      <DamageDetails
-        process={selectedProcess}
-        isOpen={isDetailsOpen}
-        onOpenChange={setIsDetailsOpen}
-      />
     </div>
   );
 };
