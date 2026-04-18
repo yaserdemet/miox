@@ -13,12 +13,17 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
+import { Textarea } from "@/components/ui/textarea";
+import { useNotesStore } from "@/store/useNotesStore";
 import { ChevronLeft } from "lucide-react";
 
 export const DamageDetailsPage: React.FC = () => {
   const { t } = useTranslation();
   const { fileNo } = useParams<{ fileNo: string }>();
   const navigate = useNavigate();
+
+  const note = useNotesStore((state) => state.getNote(fileNo || ""));
+  const setNote = useNotesStore((state) => state.setNote);
 
   const process = (data as DamageProcess[]).find((d) => d.fileNo === fileNo);
 
@@ -90,19 +95,33 @@ export const DamageDetailsPage: React.FC = () => {
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <div className="md:col-span-1 bg-card border rounded-lg p-6 space-y-4">
-          <h3 className="font-semibold text-lg border-b pb-2">{t("summary")}</h3>
-          <div className="space-y-3">
-            <div>
-              <p className="text-sm text-muted-foreground">{t("currentStatus")}</p>
-              <Badge variant={getStatusVariant(process.currentStatus)} className="mt-1">
-                {process.currentStatus}
-              </Badge>
+        <div className="md:col-span-1 space-y-6">
+          <div className="bg-card border rounded-lg p-6 space-y-4">
+            <h3 className="font-semibold text-lg border-b pb-2">{t("summary")}</h3>
+            <div className="space-y-3">
+              <div>
+                <p className="text-sm text-muted-foreground">{t("currentStatus")}</p>
+                <Badge variant={getStatusVariant(process.currentStatus)} className="mt-1">
+                  {process.currentStatus}
+                </Badge>
+              </div>
+              <div>
+                <p className="text-sm text-muted-foreground">{t("estimatedTime")}</p>
+                <p className="font-medium">{process.estimatedRemainingTime}</p>
+              </div>
             </div>
-            <div>
-              <p className="text-sm text-muted-foreground">{t("estimatedTime")}</p>
-              <p className="font-medium">{process.estimatedRemainingTime}</p>
+          </div>
+
+          <div className="bg-card border rounded-lg p-6 space-y-4 shadow-sm">
+            <div className="flex items-center justify-between border-b pb-2">
+              <h3 className="font-semibold text-lg">{t("notes")}</h3>
             </div>
+            <Textarea
+              className="min-h-[200px] resize-none focus-visible:ring-1"
+              placeholder={t("notesPlaceholder")}
+              value={note}
+              onChange={(e) => setNote(fileNo || "", e.target.value)}
+            />
           </div>
         </div>
 
@@ -125,28 +144,6 @@ export const DamageDetailsPage: React.FC = () => {
                       {detail.status}
                     </Badge>
                   </TableCell>
-                  <TableCell>
-                    <div className="grid grid-cols-1 gap-1 text-xs sm:text-sm">
-                      {Object.entries(detail).map(([key, value]) => {
-                        if (key === "title" || key === "status" || !value || value === "gg/aa/yyyy 00:00" || value === "0 TL" || value === "—" || value === "Atanmadı") return null;
-                        return (
-                          <div key={key} className="flex gap-2">
-                            <span className="font-semibold text-muted-foreground min-w-[120px]">{labelMap[key] || key}:</span>
-                            <span>{value}</span>
-                          </div>
-                        );
-                      })}
-                    </div>
-                  </TableCell>
-                </TableRow>
-              ))}
-            </TableBody>
-          </Table>
-        </div>
-      </div>
-    </div>
-  );
-};
                   <TableCell>
                     <div className="grid grid-cols-1 gap-1 text-xs sm:text-sm">
                       {Object.entries(detail).map(([key, value]) => {

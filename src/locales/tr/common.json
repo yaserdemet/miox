@@ -24,5 +24,11 @@
   "turkish": "Türkçe",
   "english": "İngilizce",
   "dataLoading": "Veriler Yükleniyor...",
-  "errorLoading": "Veriler yüklenirken bir hata oluştu."
+  "errorLoading": "Veriler yüklenirken bir hata oluştu.",
+  "notes": "Dosya Notları",
+  "notesPlaceholder": "Buraya özel notlarınızı ekleyebilirsiniz...",
+  "theme": "Tema",
+  "light": "Aydınlık",
+  "dark": "Karanlık",
+  "system": "Sistem"
 }

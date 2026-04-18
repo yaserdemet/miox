@@ -24,5 +24,11 @@
   "turkish": "Turkish",
   "english": "English",
   "dataLoading": "Loading Data...",
-  "errorLoading": "An error occurred while loading data."
+  "errorLoading": "An error occurred while loading data.",
+  "notes": "File Notes",
+  "notesPlaceholder": "You can add your private notes here...",
+  "theme": "Theme",
+  "light": "Light",
+  "dark": "Dark",
+  "system": "System"
 }

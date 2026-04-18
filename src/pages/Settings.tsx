@@ -8,12 +8,11 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Label } from "@/components/ui/label";
-
-// Eğer label komponenti yoksa basit bir span kullanacağız, ama shadcn eklemiş olabiliriz.
-// Şimdilik standart label kullanıyorum.
+import { useTheme } from "@/components/theme-provider";
 
 export const Settings = () => {
   const { t, i18n } = useTranslation();
+  const { theme, setTheme } = useTheme();
 
   const handleLanguageChange = (lang: string) => {
     i18n.changeLanguage(lang);
@@ -26,23 +25,48 @@ export const Settings = () => {
         <p className="text-muted-foreground">{t("languageDesc")}</p>
       </div>
 
-      <div className="bg-card border rounded-lg p-6 max-w-md space-y-4">
-        <div className="space-y-2">
-          <Label htmlFor="language" className="text-base font-semibold">
-            {t("language")}
-          </Label>
-          <Select
-            defaultValue={i18n.language}
-            onValueChange={handleLanguageChange}
-          >
-            <SelectTrigger id="language">
-              <SelectValue />
-            </SelectTrigger>
-            <SelectContent>
-              <SelectItem value="tr">{t("turkish")}</SelectItem>
-              <SelectItem value="en">{t("english")}</SelectItem>
-            </SelectContent>
-          </Select>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        {/* Dil Ayarları */}
+        <div className="bg-card border rounded-lg p-6 space-y-4 shadow-sm">
+          <div className="space-y-2">
+            <Label htmlFor="language" className="text-base font-semibold">
+              {t("language")}
+            </Label>
+            <Select
+              defaultValue={i18n.language}
+              onValueChange={handleLanguageChange}
+            >
+              <SelectTrigger id="language" className="w-full">
+                <SelectValue />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="tr">{t("turkish")}</SelectItem>
+                <SelectItem value="en">{t("english")}</SelectItem>
+              </SelectContent>
+            </Select>
+          </div>
+        </div>
+
+        {/* Tema Ayarları */}
+        <div className="bg-card border rounded-lg p-6 space-y-4 shadow-sm">
+          <div className="space-y-2">
+            <Label htmlFor="theme" className="text-base font-semibold">
+              {t("theme")}
+            </Label>
+            <Select
+              defaultValue={theme}
+              onValueChange={(value) => setTheme(value as any)}
+            >
+              <SelectTrigger id="theme" className="w-full">
+                <SelectValue />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="light">{t("light")}</SelectItem>
+                <SelectItem value="dark">{t("dark")}</SelectItem>
+                <SelectItem value="system">{t("system")}</SelectItem>
+              </SelectContent>
+            </Select>
+          </div>
         </div>
       </div>
     </div>

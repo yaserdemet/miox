@@ -3,7 +3,7 @@ import { TableCell, TableRow } from "@/components/ui/table";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import type { DamageProcess } from "./damage-types";
-import { Eye } from "lucide-react";
+import { Eye, Calendar } from "lucide-react";
 
 interface DamageRowProps {
   process: DamageProcess;
@@ -43,7 +43,10 @@ export const DamageRow: React.FC<DamageRowProps> = ({ process }) => {
         </Badge>
       </TableCell>
       <TableCell>
-        <span className="text-muted-foreground">{process.estimatedRemainingTime}</span>
+        <div className="flex items-center gap-2 text-muted-foreground whitespace-nowrap">
+          <Calendar className="size-3.5 text-blue-500/70" />
+          <span>{process.estimatedRemainingTime}</span>
+        </div>
       </TableCell>
       <TableCell className="text-right">
         <Button
