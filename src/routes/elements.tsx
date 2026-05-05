@@ -11,6 +11,8 @@ const Loadable = (Component: any) => {
   return LoadableComponent;
 };
 
-export const DamageProcess = Loadable(lazy(() => import("@/pages/damage-process-page")));
-export const DamageDetails = Loadable(lazy(() => import("@/pages/damage-details-page")));
 export const Settings = Loadable(lazy(() => import("@/pages/Settings")));
+export const NewTeam = Loadable(lazy(() => import("@/pages/teams/NewTeam")));
+export const TeamList = Loadable(lazy(() => import("@/pages/teams/TeamList")));
+export const NewUser = Loadable(lazy(() => import("@/pages/users/NewUser")));
+export const UserList = Loadable(lazy(() => import("@/pages/users/UserList")));

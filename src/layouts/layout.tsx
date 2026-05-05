@@ -1,7 +1,9 @@
 import React from "react"
 import { SidebarProvider, SidebarTrigger, SidebarInset } from "@/components/ui/sidebar"
-import { AppSidebar } from "@/components/app-sidebar"
+import { AppSidebar } from "./app-sidebar"
 import { Separator } from "@/components/ui/separator"
+import { Toaster } from "@/components/ui/sonner"
+
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -71,6 +73,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
           </div>
         </div>
       </SidebarInset>
+      <Toaster />
     </SidebarProvider>
   )
 }
