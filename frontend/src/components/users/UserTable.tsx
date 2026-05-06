@@ -24,10 +24,12 @@ import { useState } from "react"
 
 interface User {
   _id: string
-  fullName: string
-  email: string
+  name: string
+  surname: string
+  age: number
   role: string
-  date: string
+  phoneNumber: string
+  education: string
 }
 
 interface Pagination {
@@ -45,11 +47,18 @@ interface UserTableProps {
   onEdit?: (user: User) => void
 }
 
-const UserTable = ({ users, pagination, onPageChange, onDelete, onEdit }: UserTableProps) => {
+const UserTable = ({
+  users,
+  pagination,
+  onPageChange,
+  onDelete,
+  // onEdit,
+}: UserTableProps) => {
   const [isDeleteDialogOpen, setIsDeleteDialogOpen] = useState(false)
   const [selectedId, setSelectedId] = useState<string | null>(null)
 
   const handleDeleteClick = (id: string) => {
+    // onDelete?.(id)
     setSelectedId(id)
     setIsDeleteDialogOpen(true)
   }
@@ -61,11 +70,11 @@ const UserTable = ({ users, pagination, onPageChange, onDelete, onEdit }: UserTa
       setSelectedId(null)
     }
   }
-
+  
   return (
     <>
-      <Card className="w-full border-sidebar-border/50 shadow-lg">
-        <CardHeader className="flex flex-row items-center justify-between">
+      <Card className="w-full border-sidebar-border/50 shadow-lg overflow-hidden">
+        <CardHeader className="flex flex-row items-center justify-between bg-muted/30 pb-4">
           <CardTitle className="text-xl font-bold tracking-tight">
             Kullanıcı Listesi
           </CardTitle>
@@ -95,39 +104,59 @@ const UserTable = ({ users, pagination, onPageChange, onDelete, onEdit }: UserTa
             </div>
           )}
         </CardHeader>
-        <CardContent>
+        <CardContent className="p-0">
           <Table>
-            <TableCaption>Sistemde kayıtlı olan tüm kullanıcılar.</TableCaption>
-            <TableHeader>
+            <TableHeader className="bg-muted/20">
               <TableRow>
-                <TableHead className="w-[250px]">Ad Soyad</TableHead>
-                <TableHead>E-posta</TableHead>
-                <TableHead>Rol</TableHead>
-                <TableHead className="text-right">İşlemler</TableHead>
+                <TableHead className="font-bold">Ad</TableHead>
+                <TableHead className="font-bold">Soyad</TableHead>
+                <TableHead className="font-bold text-center">Yaş</TableHead>
+                <TableHead className="font-bold">Rol / Ünvan</TableHead>
+                <TableHead className="font-bold">Telefon</TableHead>
+                <TableHead className="font-bold">Eğitim</TableHead>
+                <TableHead className="text-right font-bold pr-6">
+                  İşlemler
+                </TableHead>
               </TableRow>
             </TableHeader>
             <TableBody>
               {users?.length === 0 ? (
                 <TableRow>
                   <TableCell
-                    colSpan={4}
-                    className="py-10 text-center text-muted-foreground"
+                    colSpan={7}
+                    className="py-12 text-center text-muted-foreground"
                   >
-                    Henüz bir kullanıcı bulunamadı.
+                    <div className="flex flex-col items-center gap-2">
+                      <p className="text-lg font-medium">
+                        Henüz bir kullanıcı bulunamadı.
+                      </p>
+                      <p className="text-sm">
+                        Yeni bir kullanıcı eklemek için formu kullanabilirsiniz.
+                      </p>
+                    </div>
                   </TableCell>
                 </TableRow>
               ) : (
                 users?.map((user) => (
-                  <TableRow key={user._id}>
-                    <TableCell className="font-medium">{user.fullName}</TableCell>
-                    <TableCell>{user.email}</TableCell>
-                    <TableCell>{user.role}</TableCell>
-                    <TableCell className="text-right">
-                      <div className="flex justify-end gap-2">
+                  <TableRow key={user._id} className="hover:bg-muted/50 transition-colors">
+                    <TableCell className="font-medium">{user.name}</TableCell>
+                    <TableCell>{user.surname}</TableCell>
+                    <TableCell className="text-center">{user.age}</TableCell>
+                    <TableCell>
+                      <span className="inline-flex items-center rounded-full bg-blue-50 px-2 py-1 text-xs font-medium text-blue-700 ring-1 ring-inset ring-blue-700/10">
+                        {user.role}
+                      </span>
+                    </TableCell>
+                    <TableCell className="font-mono text-xs">
+                      {user.phoneNumber}
+                    </TableCell>
+                    <TableCell>{user.education}</TableCell>
+                    <TableCell className="text-right pr-4">
+                      <div className="flex justify-end gap-1">
                         <Button
                           variant="ghost"
                           size="icon"
-                          onClick={() => onEdit?.(user)}
+                          // onClick={() => onEdit?.(user)}
                           className="h-8 w-8 text-blue-600 hover:bg-blue-50 hover:text-blue-700"
                         >
                           <Pencil className="h-4 w-4" />
@@ -154,19 +183,23 @@ const UserTable = ({ users, pagination, onPageChange, onDelete, onEdit }: UserTa
         open={isDeleteDialogOpen}
         onOpenChange={setIsDeleteDialogOpen}
       >
-        <AlertDialogContent>
+        <AlertDialogContent className="border-sidebar-border/50">
           <AlertDialogHeader>
-            <AlertDialogTitle>Emin misiniz?</AlertDialogTitle>
+            <AlertDialogTitle className="text-xl font-bold">
+              Emin misiniz?
+            </AlertDialogTitle>
             <AlertDialogDescription>
               Bu işlem geri alınamaz. Bu kullanıcı sistemden kalıcı olarak
               silinecektir.
             </AlertDialogDescription>
           </AlertDialogHeader>
           <AlertDialogFooter>
-            <AlertDialogCancel>İptal</AlertDialogCancel>
+            <AlertDialogCancel className="border-sidebar-border/50">
+              İptal
+            </AlertDialogCancel>
             <AlertDialogAction
               onClick={handleConfirmDelete}
-              className="bg-red-600 hover:bg-red-700"
+              className="bg-red-600 hover:bg-red-700 text-white"
             >
               Sil
             </AlertDialogAction>

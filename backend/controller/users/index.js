@@ -18,9 +18,28 @@ const getAllUser = async (req, res) => {
 };
 
 const createUser = async (req, res) => {
-  const data = await User.create(req.body);
-  res.status(201).json({
-    message: "OK",
-    data,
-  });
+  try {
+
+    const data = await User.create(req.body);
+    res.status(201).json({
+      message: "OK",
+      data,
+    });
+  } catch (e) {
+    res.status(400).json({
+      message: "User Oluşturulamadı",
+      error: e.message,
+    });
+  }
 };
+
+const deleteUser = async (req, res) => {
+  try {
+    await User.findByIdAndDelete(req.params.id);
+    res.status(200).json({ message: "Kullanıcı başarıyla silindi" });
+  } catch (e) {
+    res.status(400).json({ message: "Silme işlemi başarısız", error: e.message });
+  }
+};
+
+module.exports = { getAllUser, createUser, deleteUser };

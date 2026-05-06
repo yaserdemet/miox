@@ -22,16 +22,19 @@ const NewTeamForm = () => {
     reset,
     formState: { errors, isSubmitting },
   } = useForm()
-  const teamApi = createCrudApi("/teams")
+  const teamApi = createCrudApi("/teams", {
+    create: {
+      success: "Takım başarıyla oluşturuldu.",
+      error: "Takım oluşturulurken bir hata oluştu."
+    }
+  })
   const onSubmit = async (data: any) => {
     try {
       const response = await teamApi.create(data)
       if (response) {
-        toast.success("Takım başarıyla oluşturuldu.")
         reset()
       }
     } catch (error: any) {
-      toast.error("Takım oluşturulurken bir hata oluştu.")
       console.error(error)
     }
   }
